@@ -1,7 +1,7 @@
-import NumberInput, { NumberInputProps } from "..";
+import NumberInput, { NumberInputProps } from '..';
 import withFormatValidation, {
   FormattedInputProps,
-} from "../withFormatValidation";
+} from '../withFormatValidation';
 
 export const positiveIntegerMaskFormatter = (value: string) => {
   if (!/^\d+$/.test(value)) {
@@ -21,7 +21,7 @@ const PositiveIntegerInput = withFormatValidation<NumberInputProps>(
   NumberInput,
   positiveIntegerMaskFormatter,
   positiveIntegerValueFormatter,
-  additionalCondition
+  additionalCondition,
 );
 
 export type PositiveIntegerInputProps = FormattedInputProps<NumberInputProps>;

@@ -1,24 +1,24 @@
-import _ from "lodash";
+import _ from 'lodash';
 import withFormatValidation, {
   FormattedInputProps,
-} from "../withFormatValidation";
-import NumberInput, { NumberInputProps } from "..";
+} from '../withFormatValidation';
+import NumberInput, { NumberInputProps } from '..';
 
 export const halfDateMaskFormatter = (value: string) => {
-  if ((isNaN(Number(value)) || value.trim() === "") && value !== ".") {
+  if ((isNaN(Number(value)) || value.trim() === '') && value !== '.') {
     return value;
   } else {
     if (!/^-?\d*\.?\d*$/.test(value)) {
       return value;
     }
-    if (value === ".") value = "0";
+    if (value === '.') value = '0';
     const parsed = parseFloat(value);
     const roundedValue = Math.ceil(parsed * 2) / 2;
     return roundedValue.toString();
   }
 };
 export const haftDateValueFormatter = (value: string) => {
-  if (value === ".") value = "0";
+  if (value === '.') value = '0';
   const parsed = parseFloat(value);
   return Math.ceil(parsed * 2) / 2;
 };
@@ -31,9 +31,9 @@ const HalfDateInput = withFormatValidation<NumberInputProps>(
   NumberInput,
   halfDateMaskFormatter,
   haftDateValueFormatter,
-  additionalCondition
+  additionalCondition,
 );
 
-export type PositiveIntegerInputProps = FormattedInputProps<NumberInputProps>;
+export type HalfDateInputProps = FormattedInputProps<NumberInputProps>;
 
 export default HalfDateInput;

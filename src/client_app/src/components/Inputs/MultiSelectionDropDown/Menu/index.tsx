@@ -1,6 +1,7 @@
-import React from "react";
-import { Form } from "react-bootstrap";
-import { List } from "./styles";
+import React from 'react';
+import { Form } from 'react-bootstrap';
+import { List } from './styles';
+import Option from '@/models/option';
 
 interface Props {
   children: any;
@@ -9,7 +10,10 @@ interface Props {
   labeledBy?: string;
   maxLength?: number;
   search: string;
+  options: Option[];
   handleSearch: (text: string) => void;
+  actionLabel?: string;
+  buttonAction?: (value: string) => void;
 }
 
 const Menu = React.forwardRef(
@@ -23,7 +27,7 @@ const Menu = React.forwardRef(
       search,
       handleSearch,
     }: Props,
-    ref: React.LegacyRef<HTMLDivElement>
+    ref: React.LegacyRef<HTMLDivElement>,
   ) => {
     return (
       <div
@@ -31,7 +35,7 @@ const Menu = React.forwardRef(
         className={className}
         style={{
           ...style,
-          minWidth: "100%",
+          minWidth: '100%',
         }}
         aria-labelledby={labeledBy}
       >
@@ -51,7 +55,7 @@ const Menu = React.forwardRef(
         )}
       </div>
     );
-  }
+  },
 );
 
 export default Menu;

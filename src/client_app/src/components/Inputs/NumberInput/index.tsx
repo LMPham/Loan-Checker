@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
-import { Input } from "./styles";
-import useLocalNumberValue from "./useLocalNumberValue";
+import React, { memo, useState } from 'react';
+import { Input } from './styles';
+import useLocalNumberValue from './useLocalNumberValue';
 
 export type NumberInputProps = React.HTMLProps<HTMLInputElement> & {
   externalValue: number | null | undefined;
@@ -9,11 +9,6 @@ export type NumberInputProps = React.HTMLProps<HTMLInputElement> & {
   valueFormatter: (value: string) => number;
   additionalCondition: (value: string) => boolean;
   isInvalid?: boolean;
-  externalOnFocus?: () => any;
-  externalOnBlur?: () => any;
-  externalOnMouseEnter?: () => any;
-  externalOnMouseLeave?: () => any;
-  isPaddedRight?: boolean;
   withoutFormatter?: boolean;
 };
 const NumberInput = memo(
@@ -26,12 +21,7 @@ const NumberInput = memo(
         valueFormatter,
         additionalCondition,
         isInvalid = undefined,
-        externalOnFocus = () => {},
-        externalOnBlur = () => {},
-        externalOnMouseEnter = () => {},
-        externalOnMouseLeave = () => {},
         disabled,
-        isPaddedRight = false,
         onBlur,
         onFocus,
         name,
@@ -39,14 +29,14 @@ const NumberInput = memo(
         withoutFormatter,
         className,
       }: NumberInputProps,
-      ref
+      ref,
     ) => {
       const [isFieldFocused, setIsFieldFocused] = useState(false);
 
       const { maskedValue, setMaskedValue } = useLocalNumberValue(
         externalValue,
         isFieldFocused,
-        !withoutFormatter ? maskFormatter : (value) => value
+        !withoutFormatter ? maskFormatter : (value) => value,
       );
 
       return (
@@ -58,14 +48,14 @@ const NumberInput = memo(
           onChange={(e: any) => {
             const { value } = e.target;
 
-            if (value === "") {
-              setMaskedValue("");
+            if (value === '') {
+              setMaskedValue('');
               setExternalValue(null);
             }
 
             if (
-              (isNaN(Number(value)) || value.trim() === "") &&
-              value !== "."
+              (isNaN(Number(value)) || value.trim() === '') &&
+              value !== '.'
             ) {
               return;
             }
@@ -76,25 +66,24 @@ const NumberInput = memo(
             }
           }}
           isInvalid={isInvalid}
-          value={maskedValue ? maskedValue : ""}
+          value={maskedValue || ''}
           onFocus={(e: any) => {
-            onFocus && onFocus(e);
+            if (onFocus) {
+              onFocus(e);
+            }
             setIsFieldFocused(true);
-            externalOnFocus();
           }}
           onBlur={(e: any) => {
-            onBlur && onBlur(e);
+            if (onBlur) {
+              onBlur(e);
+            }
             setIsFieldFocused(false);
-            externalOnBlur();
           }}
-          onMouseEnter={() => externalOnMouseEnter()}
-          onMouseLeave={() => externalOnMouseLeave()}
           disabled={disabled}
-          $isPaddedRight={isPaddedRight}
         />
       );
-    }
-  )
+    },
+  ),
 );
 
 export default NumberInput;
