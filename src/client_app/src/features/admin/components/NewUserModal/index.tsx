@@ -47,7 +47,6 @@ function NewUserModal({ companyOptions, setRefresh }: Props) {
       email: '',
       companyId: '',
       groupIds: [],
-      otherConsultants: false,
     },
     mode: 'all',
   });
@@ -257,21 +256,6 @@ function NewUserModal({ companyOptions, setRefresh }: Props) {
                     if (!value || value.length === 0)
                       return DefinedErrorMessage.REQUIRED_MESSAGE;
                   },
-                }}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <label className="col-3 col-form-label form-label">
-              Other Consultants
-            </label>
-            <Col className="d-flex align-items-center">
-              <Controller
-                name="otherConsultants"
-                control={control}
-                render={({ field }) => {
-                  const { value, ...rest } = field;
-                  return <FormCheck type="switch" checked={value} {...rest} />;
                 }}
               />
             </Col>

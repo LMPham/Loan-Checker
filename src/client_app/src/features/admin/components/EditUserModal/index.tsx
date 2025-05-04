@@ -58,7 +58,6 @@ function EditUserModal({
       companyId: '',
       groupIds: [],
       active: true,
-      otherConsultants: false,
     },
     mode: 'all',
   });
@@ -116,7 +115,6 @@ function EditUserModal({
           companyId: data.companyId,
           active: data.active,
           groupIds: data.groupIds,
-          otherConsultants: data.otherConsultants,
         });
       })
       .catch((error) => {
@@ -300,23 +298,6 @@ function EditUserModal({
                         if (!value || value.length === 0)
                           return DefinedErrorMessage.REQUIRED_MESSAGE;
                       },
-                    }}
-                  />
-                </Col>
-              </Row>
-              <Row className="mb-3">
-                <label className="col-3 col-form-label form-label">
-                  Other Consultants
-                </label>
-                <Col className="d-flex align-items-center">
-                  <Controller
-                    name="otherConsultants"
-                    control={control}
-                    render={({ field }) => {
-                      const { value, ...rest } = field;
-                      return (
-                        <FormCheck type="switch" checked={value} {...rest} />
-                      );
                     }}
                   />
                 </Col>

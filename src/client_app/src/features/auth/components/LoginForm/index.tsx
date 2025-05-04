@@ -3,23 +3,21 @@ import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import InputErrorMessage from '@/components/InputErrorMessage';
 import { emailRegex } from '@/helpers/regex-pattern';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import sessionService from '@auth/services/session.service';
 import { IconEyeOff, IconEye } from '@tabler/icons-react';
-import { authPaths } from '@auth/enums/auth-paths';
 import ErrorModal from '@/components/ErrorModal';
 
 function LoginForm() {
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
-  const { control, formState, handleSubmit, clearErrors, getValues, setError } =
-    useForm({
-      defaultValues: {
-        email: '',
-        password: '',
-      },
-      mode: 'all',
-    });
+  const { control, formState, handleSubmit, clearErrors, setError } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'all',
+  });
   const { errors, dirtyFields } = formState;
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isInactiveAccount, setIsInactiveAccount] = useState<boolean>(false);
@@ -103,15 +101,7 @@ function LoginForm() {
         <div className="mb-2">
           <label className="form-label">
             Password
-            <span className="form-label-description">
-              <Link
-                to={authPaths.forgotPassword}
-                state={{ email: getValues().email }}
-                tabIndex={3}
-              >
-                I forgot password
-              </Link>
-            </span>
+            <span className="form-label-description"></span>
           </label>
           <Controller
             name="password"

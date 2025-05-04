@@ -44,9 +44,7 @@ function Sidebar() {
           ) : (
             <>
               <Link to="/">
-                <h1 className="text-white m-0 text-center">
-                  Loan Default Predictor
-                </h1>
+                <h1 className="text-white m-0 text-center">Admin</h1>
               </Link>
 
               <IconChevronLeft

@@ -12,7 +12,6 @@ export interface CreateUserModel {
   email: string;
   companyId: string;
   groupIds: string[];
-  otherConsultants: boolean;
 }
 
 export interface UpdateUserModel extends CreateUserModel {

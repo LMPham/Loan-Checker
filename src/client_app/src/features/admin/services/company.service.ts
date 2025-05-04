@@ -9,7 +9,7 @@ export function getCompanies() {
     },
   };
 
-  return fetch(`${env.VITE_APP_API_END_POINT}/Companies`, requestOptions).then(
+  return fetch(`${env.VITE_APP_API_END_POINT}/companies`, requestOptions).then(
     handleResponse,
   );
 }
