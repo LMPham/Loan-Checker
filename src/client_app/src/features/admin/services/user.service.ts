@@ -26,7 +26,7 @@ export async function getUsers(model: UserFilter) {
     },
   };
 
-  let query = `?currentPage=${model.currentPage}&pageSize=${model.pageSize}`;
+  let query = `?currentPage=${model.currentPage ?? 1}&pageSize=${model.pageSize}`;
   if (model.searchText) query += `&searchText=${model.searchText}`;
 
   const response = await fetch(

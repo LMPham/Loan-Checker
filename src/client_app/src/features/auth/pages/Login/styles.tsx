@@ -1,8 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const LoginCard = styled.div`
-  background-color: ${({ theme }) => theme.auth.backgroundColor};
-`;
+export const LoginCard = styled.div``;
 export const Wrapper = styled.div`
   position: absolute;
   top: 40%;

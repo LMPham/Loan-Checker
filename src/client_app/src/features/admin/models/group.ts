@@ -1,7 +1,6 @@
 export interface CreateGroupModel {
     name: string;
     type: string;
-    dueDays: number | undefined;
     companyIds: string[];
     userIds: string[];
 }
@@ -14,7 +13,6 @@ export interface GroupModel {
     id: string;
     name: string;
     type: string;
-    dueDays: number;
     companyNames: string[];
     active: boolean;
 }

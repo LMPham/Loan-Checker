@@ -1,7 +1,7 @@
 import InputErrorMessage from '@/components/InputErrorMessage';
 import MultiSelectionDropDown from '@/components/Inputs/MultiSelectionDropDown';
 import { StyledModalHeader } from '@/styles/common';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback,  useState } from 'react';
 import { Button, Col, FormControl, Modal, Row } from 'react-bootstrap';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import Option from '@/models/option';
@@ -15,7 +15,6 @@ import { GroupType } from '@/enums/group-type';
 import DefinedErrorMessage from '@/constants/message';
 import { useNotification } from '@/providers/NotificationProvider';
 import { getUsersByCompanyIds } from '@admin/services/user.service';
-import HalfDateInput from '@/components/Inputs/NumberInput/HalfDateInput';
 
 type Props = {
   showModal: boolean;
@@ -48,7 +47,6 @@ function NewUserGroupModal({
     defaultValues: {
       name: '',
       type: GroupType.Workflow,
-      dueDays: undefined,
       companyIds: [],
       userIds: [],
     },
@@ -255,43 +253,6 @@ function NewUserGroupModal({
                 validate: (value) => {
                   if (!value || value.length === 0)
                     return DefinedErrorMessage.REQUIRED_MESSAGE;
-                },
-              }}
-            />
-          </Col>
-        </Row>
-        <Row className="mb-3">
-          <label className="col-3 col-form-label form-label">
-            Deadline (Days)
-          </label>
-          <Col>
-            <Controller
-              name="dueDays"
-              control={control}
-              render={({ field, fieldState: { error } }) => {
-                const {
-                  onChange: onControllerChange,
-                  value,
-                  ...restOfField
-                } = field;
-                return (
-                  <>
-                    <HalfDateInput
-                      externalValue={value}
-                      setExternalValue={onControllerChange}
-                      placeholder="Enter deadline here"
-                      isInvalid={!!error}
-                      {...restOfField}
-                    />
-                    <InputErrorMessage errors={errors} name="dueDays" />
-                  </>
-                );
-              }}
-              rules={{
-                required: DefinedErrorMessage.REQUIRED_MESSAGE,
-                validate: (value) => {
-                  if (value == 0)
-                    return DefinedErrorMessage.GREATER_THAN_ZERO_MESSAGE;
                 },
               }}
             />

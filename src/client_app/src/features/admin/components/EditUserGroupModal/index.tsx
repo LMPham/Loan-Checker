@@ -57,7 +57,6 @@ function EditUserGroupModal({
     defaultValues: {
       name: '',
       type: '',
-      dueDays: undefined,
       companyIds: [],
       userIds: [],
       active: false,
@@ -277,43 +276,6 @@ function EditUserGroupModal({
                 validate: (value) => {
                   if (!value || value.length === 0)
                     return DefinedErrorMessage.REQUIRED_MESSAGE;
-                },
-              }}
-            />
-          </Col>
-        </Row>
-        <Row className="mb-3">
-          <label className="col-3 col-form-label form-label">
-            Deadline (Days)
-          </label>
-          <Col>
-            <Controller
-              name="dueDays"
-              control={control}
-              render={({ field, fieldState: { error } }) => {
-                const {
-                  onChange: onControllerChange,
-                  value,
-                  ...restOfField
-                } = field;
-                return (
-                  <>
-                    <HalfDateInput
-                      externalValue={value}
-                      setExternalValue={onControllerChange}
-                      placeholder="Enter deadline here"
-                      isInvalid={!!error}
-                      {...restOfField}
-                    />
-                    <InputErrorMessage errors={errors} name="dueDays" />
-                  </>
-                );
-              }}
-              rules={{
-                required: DefinedErrorMessage.REQUIRED_MESSAGE,
-                validate: (value) => {
-                  if (value == 0)
-                    return DefinedErrorMessage.GREATER_THAN_ZERO_MESSAGE;
                 },
               }}
             />
