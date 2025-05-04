@@ -4,6 +4,8 @@ const branding = {
   blue: '#41C0F0',
   blue1: '#3C9FD7',
   blue2: '#41C0F01A',
+  blue300: "#086cd4",
+  blue300tint25: 'rgba(8,108,212,0.25)',
   red: '#E51935',
   red1: '#D35C51',
   yellow: '#D9B300',

@@ -59,17 +59,17 @@ const inputs = {
     borderInvalidColor: constants.red,
   },
   switchInput: {
-    primaryColor: constants.green500,
-    secondaryColor: constants.green500tint25,
+    primaryColor: constants.blue300,
+    secondaryColor: constants.blue300tint25,
     borderColor: constants.grey400,
     disabledBackgroundColor: constants.grey400,
   },
   checkboxInput: {
-    primaryColor: constants.green500,
-    secondaryColor: constants.green500tint25,
+    primaryColor: constants.blue300,
+    secondaryColor: constants.blue300tint25,
   },
   fileInput: {
-    primaryColor: constants.green500,
+    primaryColor: constants.blue300,
     secondaryColor: constants.grey400,
     borderColor: constants.grey400,
     white: constants.white,
@@ -85,7 +85,7 @@ export const brand = {
     redHighlightedText: constants.red,
   },
   pageHeader: {
-    primaryBackground: constants.green500,
+    primaryBackground: constants.blue300,
     secondaryBackground: constants.grey100,
     userGreetingText: constants.grey100,
     text: constants.grey100,
@@ -127,9 +127,9 @@ export const brand = {
 
   breadcrumb: {
     link: constants.grey400,
-    linkHover: constants.green500,
-    textActive: constants.green500,
-    separator: constants.green500,
+    linkHover: constants.blue300,
+    textActive: constants.blue300,
+    separator: constants.blue300,
   },
 
   successNotification: {
@@ -141,14 +141,14 @@ export const brand = {
     background: constants.white,
   },
   section: {
-    titleBackgroundColor: constants.green500,
+    titleBackgroundColor: constants.blue300,
     titleTextColor: constants.grey100,
   },
   auth: {
     backgroundColor: constants.grey100,
   },
   editModal: {
-    primaryColor: constants.green500,
+    primaryColor: constants.blue300,
     headerTextColor: constants.white,
   },
   text: {
